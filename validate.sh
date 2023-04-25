@@ -22,7 +22,7 @@ else
 fi
 
 
-sleep 10
+sleep 60
 
 demoPodsExpected=1
 demoPodsRunning=$(kubectl get pods --all-namespaces | grep -i demo-master |  grep Running | wc -l)
