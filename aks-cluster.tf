@@ -1,10 +1,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-variable "revision" {
-  default = 3
-}
-
 resource "random_pet" "prefix" {}
 
 provider "azurerm" {
@@ -23,7 +19,8 @@ resource "azurerm_resource_group" "default" {
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
-  name                = "${random_pet.prefix.id}-aks"
+  #name                = "${random_pet.prefix.id}-aks"
+  name                = "${var.clusterName}"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   dns_prefix          = "${random_pet.prefix.id}-k8s"
@@ -31,7 +28,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   default_node_pool {
     name            = "default"
     node_count      = 2
-    vm_size         = "Standard_A2_v2"
+    vm_size         = "Standard_A4_v2"
     os_disk_size_gb = 30
   }
 
@@ -49,6 +46,35 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
+
+provider "kubernetes" {
+  host                   = "${azurerm_kubernetes_cluster.default.kube_config.0.host}"
+  username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
+  password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
+  client_certificate     = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_certificate)}"
+  client_key             = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_key)}"
+  cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.cluster_ca_certificate)}"
+}
+
+
+provider "helm" {
+  kubernetes {
+  host                   = "${azurerm_kubernetes_cluster.default.kube_config.0.host}"
+  username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
+  password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
+  client_certificate     = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_certificate)}"
+  client_key             = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_key)}"
+  cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.cluster_ca_certificate)}"
+  }
+}
+
+resource "helm_release" "ingress-ngnix" {
+  name  = "ingress-nginx"
+  chart = "nginx-stable/nginx-ingress"
+
+  depends_on = [azurerm_kubernetes_cluster.default]
+}
+
 resource "null_resource" "configure" {
 
   triggers = {
@@ -58,6 +84,6 @@ resource "null_resource" "configure" {
   provisioner "local-exec" {
     command = ". ./do-all.sh 2>&1 | tee tout.txt"
   }
-  depends_on = [azurerm_kubernetes_cluster.default]
+  depends_on = [azurerm_kubernetes_cluster.default, helm_release.ingress-ngnix]
 }
 

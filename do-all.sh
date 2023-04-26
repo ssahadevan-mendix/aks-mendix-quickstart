@@ -8,12 +8,6 @@ chmod +x *.sh
 
 . ./get-creds.sh
 
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
-
-#echo namespaces is $NAMESPACE
-helm install ingress-nginx ingress-nginx/ingress-nginx 
-
 
 echo https://cdn.mendix.com/mendix-for-private-cloud/mxpc-cli/mxpc-cli-$mendixOperatorVersion-$os.tar.gz
 wget https://cdn.mendix.com/mendix-for-private-cloud/mxpc-cli/mxpc-cli-$mendixOperatorVersion-$os.tar.gz

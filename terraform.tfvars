@@ -4,3 +4,5 @@
 appId = "<TODO:REPLACE-ME>"
 password = "<TODO:REPLACE-ME>"
 subscriptionId="<TODO:REPLACE-ME>"
+revision=1
+clusterName="mxdemo"
