@@ -1,3 +1,4 @@
+#!/bin/bash
 # Find the load balancer IP address
 echo "Starting $0..."
 lbIp=""

@@ -1,4 +1,4 @@
-
+#!/bin/bash
 expectedResult=15
 
 sleep 20
@@ -22,7 +22,7 @@ else
 fi
 
 
-sleep 60
+sleep 20
 
 demoPodsExpected=1
 demoPodsRunning=$(kubectl get pods --all-namespaces | grep -i demo-master |  grep Running | wc -l)

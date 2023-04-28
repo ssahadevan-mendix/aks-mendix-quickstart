@@ -1,3 +1,4 @@
+#!/bin/bash
 # Instructions here - https://docs.mendix.com/developerportal/deploy/private-cloud-monitor
 
 NAMESPACE=grafana
