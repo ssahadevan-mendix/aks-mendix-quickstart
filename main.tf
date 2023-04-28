@@ -28,7 +28,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   default_node_pool {
     name            = "default"
     node_count      = 2
-    vm_size         = "Standard_A8_v2"
+    vm_size         = "Standard_A4_v2"
     os_disk_size_gb = 30
   }
 
@@ -49,8 +49,8 @@ resource "azurerm_kubernetes_cluster" "default" {
 
 provider "kubernetes" {
   host                   = "${azurerm_kubernetes_cluster.default.kube_config.0.host}"
- # username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
- # password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
+  #username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
+  #password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
   client_certificate     = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_certificate)}"
   client_key             = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_key)}"
   cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.cluster_ca_certificate)}"
@@ -60,8 +60,8 @@ provider "kubernetes" {
 provider "helm" {
   kubernetes {
   host                   = "${azurerm_kubernetes_cluster.default.kube_config.0.host}"
- # username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
- # password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
+  #username               = "${azurerm_kubernetes_cluster.default.kube_config.0.username}"
+  #password               = "${azurerm_kubernetes_cluster.default.kube_config.0.password}"
   client_certificate     = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_certificate)}"
   client_key             = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.client_key)}"
   cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.default.kube_config.0.cluster_ca_certificate)}"

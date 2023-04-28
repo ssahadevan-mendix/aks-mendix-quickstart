@@ -1,4 +1,3 @@
-#!/bin/bash
 expectedResult=15
 
 sleep 20
@@ -10,7 +9,7 @@ kubectl get pods --all-namespaces | grep Running
 podsRunning=$(kubectl get pods --all-namespaces | grep Running | wc -l)
 #echo $podsRunning
 
-if [[ $podsRunning -ge $expectedResult ]];
+if [ $podsRunning -ge $expectedResult ];
 then
   echo "Result: Count of pods running "
   echo "$0 - Success: Number of running pods is " $podsRunning
@@ -26,7 +25,7 @@ sleep 20
 
 demoPodsExpected=1
 demoPodsRunning=$(kubectl get pods --all-namespaces | grep -i demo-master |  grep Running | wc -l)
-if [[ $demoPodsRunning -eq $demoPodsExpected ]];
+if [ $demoPodsRunning -eq $demoPodsExpected ];
 then
   echo "Result: Checking Application Pods "
   echo "$0 - Success: Number of running demo application pods is " $demoPodsRunning

@@ -1,8 +1,7 @@
-#!/bin/bash
 # Find the load balancer IP address
 echo "Starting $0..."
 lbIp=""
-while [[ ${#lbIp} -le 5 ]]
+while [ ${#lbIp} -le 5 ]
 do
   echo "$0: Checking if Loadbancer IP is assigned ... "
   lbIp=$(kubectl get svc  | grep -i LoadBalancer | grep -v pending | awk '{ print $4 }' )

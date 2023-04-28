@@ -1,4 +1,3 @@
-#!/bin/bash
 # Instructions here - https://docs.mendix.com/developerportal/deploy/private-cloud-monitor
 
 NAMESPACE=grafana
@@ -6,7 +5,7 @@ kubectl create ns $NAMESPACE
 
 # Sets the LB IP in environment variables
 # source ensure the exported value of lbIp is available here
-source getLbIp.sh
+. ./getLbIp.sh
 
 #grafanaDomain=grafana.3.130.181.104.nip.io
 grafanaDomain=grafana.$lbIp.nip.io

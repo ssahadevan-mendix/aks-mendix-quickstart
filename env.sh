@@ -23,6 +23,9 @@ export MENDIX_NAMESPACE=mendix
 
 # Used in do-all.sh to download the right mxpc-cli version
 mendixOperatorVersion=2.10.1
-os=macos-amd64
+# For Mac
+# os=macos-amd64
+# For Linux
+os=linux-amd64
 
 export KUBE_CONFIG_PATH=~/.kube/config
