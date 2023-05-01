@@ -1,8 +1,7 @@
-#!/bin/bash
 #Get the  external IP address ip.nip.io
 
 # Find the load balancer IP address
-source getLbIp.sh
+. ./getLbIp.sh
 echo "Ingress Loadbalancer IP is :" $lbIp
 
 #Replace address in configure-template.yaml and write to configure.yaml

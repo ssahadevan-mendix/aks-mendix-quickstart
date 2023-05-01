@@ -11,3 +11,4 @@ configure.yaml
 configure-temp.yaml
 tout.txt
 terraform.tfstate.backup
+do-diff.sh
