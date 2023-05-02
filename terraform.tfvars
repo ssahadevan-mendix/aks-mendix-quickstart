@@ -6,3 +6,4 @@ password = "<TODO:REPLACE-ME>"
 subscriptionId="<TODO:REPLACE-ME>"
 revision=1
 clusterName="mxdemo"
+nodeCount=3

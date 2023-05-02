@@ -23,3 +23,12 @@ variable clusterName {
   default = "mxdemo"
 }
 
+variable "nodeCount" {
+  description ="AKS Cluster number of nodes "
+  default = 2 
+}
+
+variable "nodeMachineType" {
+  description ="AKS Cluster node machine type "
+  default = "Standard_A4_v2"
+}
