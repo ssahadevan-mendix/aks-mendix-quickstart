@@ -30,5 +30,5 @@ variable "nodeCount" {
 
 variable "nodeMachineType" {
   description ="AKS Cluster node machine type "
-  default = "Standard_A4_v2"
+  default = "Standard_B4ms"
 }
