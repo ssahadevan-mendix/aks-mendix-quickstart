@@ -19,6 +19,11 @@
     kubectl
     helm
 
+## Setting up a new vm/machine:
+
+    . ./install-pre-reqs.sh
+    az login 
+
 ## Update env.sh
     update env.sh
     update terraform.tfvars
@@ -28,6 +33,8 @@
      terraform init
      terraform plan
      terraform apply --auto-approve
+          or 
+     . ./start.sh 
 
 ## Results
 
@@ -49,6 +56,15 @@
 
 
 
+## Connected or Standlone modes
+   Update env.sh set mode to connected or standalone
+
+## 
+## Get Latest software:
+   . ./get-latest.sh
+
 ## Clean up
 
     terraform destroy
+        or 
+    . ./stop.sh

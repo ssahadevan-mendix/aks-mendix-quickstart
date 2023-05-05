@@ -29,4 +29,4 @@ mendixOperatorVersion=2.10.1
 os=linux-amd64
 
 export KUBE_CONFIG_PATH=~/.kube/config
-mode=standalone
+export mode=standalone
