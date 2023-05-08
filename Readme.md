@@ -56,8 +56,17 @@
 
 
 
-## Connected or Standlone modes
+## Connected or Standalone modes
    Update env.sh set mode to connected or standalone
+
+     export MENDIX_CONFIG_IVAL="<TODO:REPLACE-ME>"
+     export MENDIX_CONFIG_SVAL="<TODO:REPLACE-ME>"
+     ....
+     export mode=connected
+
+        Or
+
+     export mode=standalone
 
 ## 
 ## Get Latest software:
