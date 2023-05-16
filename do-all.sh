@@ -24,14 +24,14 @@ rm mxpc-cli-$mendixOperatorVersion-$os.tar.gz*
 . ./generate-yamls.sh
 
 
-if [ $mode == $defaultMode ];
+if [ "$mode" = "$defaultMode" ];
 then
-	echo "Base install "
+	echo "Base install - connected "
         ./mxpc-cli base-install --namespace $MENDIX_NAMESPACE -i $MENDIX_CONFIG_IVAL -s $MENDIX_CONFIG_SVAL --clusterMode connected --clusterType generic
 	echo "Apply Config "
         ./mxpc-cli apply-config -i $MENDIX_CONFIG_IVAL -s $MENDIX_CONFIG_SVAL --file configure.yaml
 else
-	 echo "base install "
+	 echo "base install - standalone"
  	 ./mxpc-cli base-install --namespace $MENDIX_NAMESPACE  --clusterMode standalone  --clusterType generic
 
   	echo "apply config"

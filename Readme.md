@@ -24,7 +24,7 @@
     . ./install-pre-reqs.sh
     az login 
 
-## Update env.sh
+## Update env.sh and terraform.tfvars
     update env.sh
     update terraform.tfvars
    
