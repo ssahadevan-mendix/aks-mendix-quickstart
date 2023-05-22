@@ -7,3 +7,4 @@ subscriptionId="<TODO:REPLACE-ME>"
 revision=1
 clusterName="mxdemo"
 nodeCount=2
+location="Central US"

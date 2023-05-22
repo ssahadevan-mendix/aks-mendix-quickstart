@@ -32,3 +32,8 @@ variable "nodeMachineType" {
   description ="AKS Cluster node machine type "
   default = "Standard_B4ms"
 }
+
+variable "location" {
+  description ="Location for the AWS resources"
+  default = "Central US"
+}
