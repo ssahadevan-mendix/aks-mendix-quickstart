@@ -68,10 +68,6 @@
 
      export mode=standalone
 
-## 
-## Get Latest software:
-   . ./get-latest.sh
-
 ## Clean up
 
     terraform destroy
