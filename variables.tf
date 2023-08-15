@@ -1,13 +1,13 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-variable "appId" {
-  description = "Azure Kubernetes Service Cluster service principal"
-}
+#variable "appId" {
+#  description = "Azure Kubernetes Service Cluster service principal"
+#}
 
-variable "password" {
-  description = "Azure Kubernetes Service Cluster password"
-}
+#variable "password" {
+#  description = "Azure Kubernetes Service Cluster password"
+#}
 
 variable subscriptionId {
   description ="Azure subscription Id"
@@ -31,9 +31,4 @@ variable "nodeCount" {
 variable "nodeMachineType" {
   description ="AKS Cluster node machine type "
   default = "Standard_B4ms"
-}
-
-variable "location" {
-  description ="Location for the AWS resources"
-  default = "Central US"
 }
